@@ -32,8 +32,6 @@ NodePtr GeraArvore(const vector<char>& tabuleiro, char jogador) {
 }
 
 void JogarMaquina(vector<char>& tabuleiro) {
-    cout << "MINHA VEZ!" << endl << endl;
-
     int melhorPontuacao = -10000;
     vector<int> melhoresJogadas;
 
