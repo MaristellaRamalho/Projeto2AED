@@ -43,18 +43,18 @@ bool DeuVelha(const vector<char>& tabuleiro) {
 
 int CalculaPontuacao(const vector<char>& tabuleiro, char jogador) {
     if (Vitoria(tabuleiro, 'X'))
-        return -1; // vit髍ia usu醨io
+        return -1; // vit贸ria usu谩rio
     else if (Vitoria(tabuleiro, 'O'))
-        return 1; // vit髍ia m醧uina
+        return 1; // vit贸ria m谩quina
     else
         return 0; // empate
 }
 
 int Minimax(vector<char>& tabuleiro, char jogador, int profundidade) {
     if (Vitoria(tabuleiro, 'X'))
-        return -1; // vit髍ia usu醨io
+        return -1; // vit贸ria usu谩rio
     else if (Vitoria(tabuleiro, 'O'))
-        return 1; // vit髍ia m醧uina
+        return 1; // vit贸ria m谩quina
     else if (DeuVelha(tabuleiro) || profundidade == 0)
         return 0; // empate ou limite de profundidade atingido
 
