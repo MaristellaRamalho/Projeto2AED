@@ -27,7 +27,6 @@ int main()
     cout << endl << endl;
 
     while(true){
-        ImprimirTabuleiro(tabuleiro);
         if(Vitoria(tabuleiro, 'X')){
             cout << "Voce venceu! " << endl;
             break;
@@ -40,15 +39,18 @@ int main()
         }
 
         int pos;
+        cout << endl << "SUA VEZ ! " << endl << endl;
+        ImprimirTabuleiro(tabuleiro);
         cout << "Digite a posicao (0 a 8)" << endl; // primeira linha  0 1 2
         cin >> pos;
 
         if(pos < 0 || pos > 8 || tabuleiro[pos] != ' '){
-            cout << "Posição inválida! " << endl << endl;
+            cout << "Posicao invalida! " << endl << endl;
             continue;
         }
 
         tabuleiro[pos] = 'X';
+        ImprimirTabuleiro(tabuleiro);
         JogarMaquina(tabuleiro);
 
     }
