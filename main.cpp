@@ -22,6 +22,7 @@ int main()
     cout << "---------- JOGO DA VELHA ----------" << endl << endl;
 
     cout << "INSTRUCOES: As posicoes de 0 a 8 indicam as casas do tabuleiro, sendo 0 a primeira casa na primeira linha: " << endl;
+    cout << "USUARIO : X | COMPUTADOR: O" << endl;
     ImprimirTabuleiro(tabuleiroInstr);
     cout << endl << endl;
 
@@ -43,7 +44,7 @@ int main()
         cin >> pos;
 
         if(pos < 0 || pos > 8 || tabuleiro[pos] != ' '){
-            cout << "Posição inválida! " << endl << endl;
+            cout << "PosiÃ§Ã£o invÃ¡lida! " << endl << endl;
             continue;
         }
 
