@@ -4,29 +4,28 @@
 #include "TADArvore.h"
 #include "FuncoesJogoVelha.h"
 
-NodePtr GeraArvore(const vector<char> &tabuleiro, char jogador){
+NodePtr GeraArvore(const vector<char>& tabuleiro, char jogador) {
     Arvore R;
     Cria(R);
     Insere(R, tabuleiro);
 
-    if(Vitoria(tabuleiro, 'X') || Vitoria(tabuleiro, 'O')){
+    if (Vitoria(tabuleiro, 'X') || Vitoria(tabuleiro, 'O')) {
         R->pontuacao = CalculaPontuacao(tabuleiro, jogador);
         return R;
     }
 
-    if(DeuVelha(tabuleiro)){
+    if (DeuVelha(tabuleiro)) {
         R->pontuacao = 0;
         return R;
-
     }
 
     char oponente = (jogador == 'X') ? 'O' : 'X';
 
-    for(int i = 0; i < 9; i++){
-        if(tabuleiro[i] == ' '){
-                vector<char> novoTabuleiro = tabuleiro;
-                novoTabuleiro[i] = jogador;
-                R->filhos.push_back(GeraArvore(novoTabuleiro, oponente)); // push_back -> função predefinida
+    for (int i = 0; i < 9; i++) {
+        if (tabuleiro[i] == ' ') {
+            vector<char> novoTabuleiro = tabuleiro;
+            novoTabuleiro[i] = jogador;
+            R->filhos.push_back(GeraArvore(novoTabuleiro, oponente));
         }
     }
     return R;
@@ -38,11 +37,13 @@ void JogarMaquina(vector<char>& tabuleiro) {
     int melhorPontuacao = -10000;
     vector<int> melhoresJogadas;
 
+    NodePtr Raiz = GeraArvore(tabuleiro, 'O');
+
     for (int i = 0; i < 9; i++) {
         if (tabuleiro[i] == ' ') {
             tabuleiro[i] = 'O';
 
-            int pontuacao = Minimax(tabuleiro, 'X', 4); // Ajuste a profundidade conforme necessário
+            int pontuacao = Minimax(tabuleiro, 'X', 4); // Ajuste a profundidade conforme necessÃ¡rio
 
             tabuleiro[i] = ' '; // Desfaz a jogada
 
@@ -60,5 +61,7 @@ void JogarMaquina(vector<char>& tabuleiro) {
         int melhorJogada = melhoresJogadas[rand() % melhoresJogadas.size()];
         tabuleiro[melhorJogada] = 'O';
     }
+
+    Remove(Raiz);
 }
 #endif // OPERACOESNAOPRIMITIVAS_H_INCLUDED
