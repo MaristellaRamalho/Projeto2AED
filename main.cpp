@@ -1,16 +1,14 @@
 #include <iostream>
 #include "TADArvore.h"
-#include "FuncoesJogoVelha.h"
 #include "OperacoesNaoPrimitivas.h"
-
-#include <iostream>
-#include "TADArvore.h"
+#include "FuncoesJogoVelha.h"
 
 using namespace std;
 
 int main()
 {
     vector<char> tabuleiro(9, ' ');
+
     vector<char> tabuleiroInstr(9);
 
     for(int i = 0; i < 9; i++){
@@ -26,9 +24,12 @@ int main()
     ImprimirTabuleiro(tabuleiroInstr);
     cout << endl << endl;
 
+
+
     while(true){
+        ImprimirTabuleiro(tabuleiro);
         if(Vitoria(tabuleiro, 'X')){
-            cout << "Voce venceu! " << endl;
+            cout << "Você venceu! " << endl;
             break;
         }else if(Vitoria(tabuleiro, 'O')){
             cout << "Eu venci! " << endl;
@@ -39,8 +40,6 @@ int main()
         }
 
         int pos;
-        cout << endl << "SUA VEZ ! " << endl << endl;
-        ImprimirTabuleiro(tabuleiro);
         cout << "Digite a posicao (0 a 8)" << endl; // primeira linha  0 1 2
         cin >> pos;
 
@@ -50,7 +49,6 @@ int main()
         }
 
         tabuleiro[pos] = 'X';
-        ImprimirTabuleiro(tabuleiro);
         JogarMaquina(tabuleiro);
 
     }
