@@ -41,7 +41,7 @@ void JogarMaquina(vector<char>& tabuleiro) {
         if (tabuleiro[i] == ' ') {
             tabuleiro[i] = 'O';
 
-            int pontuacao = Minimax(tabuleiro, 'X', 5); // Considerando que no caso de velha, a altura máxima é 9 -> 6 foi escolhido para dar uma boa inteligência ao jogo.
+            int pontuacao = Minimax(tabuleiro, 'X', 5); 
 
             tabuleiro[i] = ' '; // Desfaz a jogada
 
